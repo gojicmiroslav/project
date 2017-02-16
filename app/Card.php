@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Note;
 use Illuminate\Database\Eloquent\Model;
 
 class Card extends Model
@@ -15,5 +16,10 @@ class Card extends Model
     public function path()
     {
     	return '/cards/' . $this->id;
+    }
+
+    public function addNote(Note $note)
+    {
+    	return $this->notes()->save($note);
     }
 }
