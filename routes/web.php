@@ -33,3 +33,7 @@ Route::get('cards/{card}', 'CardsController@show');
 Route::post('cards/{card}/notes', 'NotesController@store');
 // or
 //Route::post('cards/{card}/note', 'CardsController@storeNote');
+
+Route::get('notes/{note}/edit', 'NotesController@edit');
+// or Route::put
+Route::patch('notes/{note}', 'NotesController@update');
