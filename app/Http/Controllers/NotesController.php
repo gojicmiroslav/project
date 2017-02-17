@@ -34,9 +34,17 @@ class NotesController extends Controller
 		//$card->notes()->create(['body' => request('body')]);
 
 		//Fourth way
-		$card->addNote(
-			new Note(['body' => request('body')])
-		);
+		// $card->addNote(
+		// 	new Note(['body' => request('body')])
+		// );
+
+		$this->validate(request(), [
+			'body' => 'required'
+		]); 
+
+		$note = new Note(['body' => request('body')]);
+		$note->user_id = 1;
+		$card->addNote($note);
 
 		return back();
 	} 

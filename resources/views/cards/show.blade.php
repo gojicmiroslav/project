@@ -13,6 +13,7 @@
 						</span>
 
 						<div class="pull-right">
+							<a href="#">{{ $note->user->username }}</a>
 							<a href="/notes/{{ $note->id }}/edit" class="btn btn-info">Edit</a> 
 							<a href="" class="btn btn-danger">Delete</a> 
 						</div>
@@ -24,7 +25,7 @@
 			<h3>Add a New Note</h3>
 
 			<form method="POST" action="/cards/{{ $card->id }}/notes">
-				<input type="hidden" name="_token" value="{{ csrf_token() }}">
+				{{ csrf_field() }}
 				<div class="form-group">
 					<textarea name="body" class="form-control"></textarea>
 				</div>
@@ -33,6 +34,14 @@
 					<button type="submit" class="btn btn-primary">Add Note</button>
 				</div>
 			</form>
+
+			@if (count($errors))
+				<ul class="list-group">
+					@foreach ($errors->all() as $error)
+						<li class="list-group-item list-group-item-danger">{{ $error }}</li>
+					@endforeach
+				</ul>
+			@endif
 		</div>
 	</div>
 @stop
