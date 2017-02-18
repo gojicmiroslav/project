@@ -39,7 +39,7 @@ class NotesController extends Controller
 		// );
 
 		$this->validate(request(), [
-			'body' => 'required'
+			'body' => 'required|min:10'
 		]); 
 
 		$note = new Note(['body' => request('body')]);
